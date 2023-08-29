@@ -3,10 +3,14 @@
 
 # Check for centos.org in preferences.js
 
-website=www.centos.org
+website="www.centos.org"
 
 if [[ $is_almalinux == "yes" ]]; then
-  website=www.almalinux.org
+  if [[ $centos_ver == "8" ]]; then
+    website="www.almalinux.org"
+  elif [[ $centos_ver == "9" ]]; then
+    website="http://almalinux.org/"
+  fi
 fi
 
 t_Log "Running $0 - firefox has $website as default page."
